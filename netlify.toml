@@ -1,0 +1,13 @@
+[build]
+  base = "packages/twenty-front"
+  publish = "build"
+  command = "cd ../.. && yarn install && yarn build:front"
+
+[build.environment]
+  NODE_VERSION = "24.5.0"
+  REACT_APP_SERVER_URL = "https://autoclient-api.onrender.com"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
