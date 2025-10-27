@@ -1,7 +1,7 @@
 [build]
   base = "packages/twenty-front"
   publish = "build"
-  command = "cd ../.. && yarn install && yarn build:front"
+  command = "cd ../.. && yarn install && npx nx build twenty-front"
 
 [build.environment]
   NODE_VERSION = "24.5.0"

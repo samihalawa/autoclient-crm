@@ -1,0 +1,79 @@
+# Google Cloud Build configuration for Twenty CRM
+# This file automates building and deploying to Cloud Run
+
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/twenty-crm:$SHORT_SHA'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/twenty-crm:latest'
+      - '-f'
+      - 'Dockerfile.cloudrun'
+      - '--build-arg'
+      - 'REACT_APP_SERVER_BASE_URL=${_SERVER_URL}'
+      - '.'
+    timeout: 1800s
+
+  # Step 2: Push the Docker image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/twenty-crm:$SHORT_SHA'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/twenty-crm:latest'
+
+  # Step 3: Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'twenty-crm'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/twenty-crm:$SHORT_SHA'
+      - '--region'
+      - '${_REGION}'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--port'
+      - '8080'
+      - '--memory'
+      - '2Gi'
+      - '--cpu'
+      - '2'
+      - '--min-instances'
+      - '1'
+      - '--max-instances'
+      - '10'
+      - '--set-env-vars'
+      - 'PORT=8080,NODE_ENV=production'
+      - '--set-cloudsql-instances'
+      - '${_CLOUDSQL_INSTANCE}'
+      - '--vpc-connector'
+      - '${_VPC_CONNECTOR}'
+      - '--timeout'
+      - '300s'
+
+# Substitution variables (set these in Cloud Build trigger or via --substitutions)
+substitutions:
+  _REGION: 'us-central1'
+  _SERVER_URL: 'https://your-app.run.app'
+  _CLOUDSQL_INSTANCE: 'your-project:region:instance-name'
+  _VPC_CONNECTOR: 'projects/your-project/locations/region/connectors/your-connector'
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+  logging: CLOUD_LOGGING_ONLY
+
+timeout: 3600s
+
+images:
+  - 'gcr.io/$PROJECT_ID/twenty-crm:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/twenty-crm:latest'

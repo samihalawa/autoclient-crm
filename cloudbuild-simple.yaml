@@ -1,0 +1,14 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/twenty-crm-custom:latest', '-f', 'packages/twenty-docker/twenty/Dockerfile', '.']
+    timeout: '1800s'
+  
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/twenty-crm-custom:latest']
+
+images:
+  - 'gcr.io/$PROJECT_ID/twenty-crm-custom:latest'
+
+timeout: '2400s'
+options:
+  machineType: 'E2_HIGHCPU_8'

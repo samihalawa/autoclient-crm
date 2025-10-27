@@ -1,5 +1,38 @@
+# Git and version control
 .git
+.github
+.gitignore
+
+# Environment files
 .env
-node_modules
-.nx/cache
+.env.*
 packages/twenty-server/.env
+
+# Dependencies
+node_modules
+.yarn/cache
+.yarn/install-state.gz
+
+# Build cache
+.nx/cache
+dist
+build
+out
+
+# Development
+.vscode
+.cursor
+*.log
+coverage
+.storybook
+storybook-static
+
+# Testing
+packages/twenty-e2e-testing
+playwright-report
+test-results
+
+# Misc
+.DS_Store
+*.md
+!README.md

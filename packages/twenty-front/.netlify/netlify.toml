@@ -1,0 +1,42 @@
+redirectsOrigin = "config"
+plugins = []
+headers = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/Users/samihalawa/git/PROJECTS_AUTOCLIENT/2025-FINAL-TWENTY-CRM-cloned-and-adjusted/twenty-crm-clone/packages/twenty-front/build"
+publishOrigin = "config"
+commandOrigin = "config"
+base = "/Users/samihalawa/git/PROJECTS_AUTOCLIENT/2025-FINAL-TWENTY-CRM-cloned-and-adjusted/twenty-crm-clone/packages/twenty-front"
+command = "cd ../.. && yarn install && npx nx build twenty-front"
+
+[build.environment]
+NODE_VERSION = "24.5.0"
+REACT_APP_SERVER_URL = "https://autoclient-api.onrender.com"
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200.0
+force = false
+
+[redirects.query]
+
+[redirects.conditions]
+
+[redirects.headers]

@@ -1,0 +1,211 @@
+{
+  "timestamp": "2025-10-26T20:56:28.525Z",
+  "baseUrl": "http://localhost:3001",
+  "routes": {
+    "home": {
+      "path": "/",
+      "name": "home",
+      "success": false,
+      "structure": {},
+      "screenshot": null,
+      "errors": [
+        "this.page.waitForTimeout is not a function"
+      ]
+    },
+    "people": {
+      "path": "/objects/people",
+      "name": "people",
+      "success": false,
+      "structure": {},
+      "screenshot": null,
+      "errors": [
+        "this.page.waitForTimeout is not a function"
+      ]
+    },
+    "companies": {
+      "path": "/objects/companies",
+      "name": "companies",
+      "success": false,
+      "structure": {},
+      "screenshot": null,
+      "errors": [
+        "this.page.waitForTimeout is not a function"
+      ]
+    },
+    "opportunities": {
+      "path": "/objects/opportunities",
+      "name": "opportunities",
+      "success": false,
+      "structure": {},
+      "screenshot": null,
+      "errors": [
+        "this.page.waitForTimeout is not a function"
+      ]
+    },
+    "tasks": {
+      "path": "/objects/tasks",
+      "name": "tasks",
+      "success": false,
+      "structure": {},
+      "screenshot": null,
+      "errors": [
+        "this.page.waitForTimeout is not a function"
+      ]
+    },
+    "notes": {
+      "path": "/objects/notes",
+      "name": "notes",
+      "success": false,
+      "structure": {},
+      "screenshot": null,
+      "errors": [
+        "this.page.waitForTimeout is not a function"
+      ]
+    },
+    "workspace-settings": {
+      "path": "/settings/workspace",
+      "name": "workspace-settings",
+      "success": false,
+      "structure": {},
+      "screenshot": null,
+      "errors": [
+        "this.page.waitForTimeout is not a function"
+      ]
+    },
+    "account-settings": {
+      "path": "/settings/accounts",
+      "name": "account-settings",
+      "success": false,
+      "structure": {},
+      "screenshot": null,
+      "errors": [
+        "this.page.waitForTimeout is not a function"
+      ]
+    }
+  },
+  "errors": [
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "page-error",
+      "message": "ApolloError: Failed to fetch",
+      "stack": "Error: ApolloError: Failed to fetch\n    at ApolloError2 (http://localhost:3001/@fs/Users/samihalawa/git/PROJECTS_AUTOCLIENT/2025-FINAL-TWENTY-CRM-cloned-and-adjusted/twenty-crm-clone/node_modules/.vite/packages/twenty-front/deps/chunk-WVTH763M.js?v=2ef45140:47:28)\n    at error (http://localhost:3001/@fs/Users/samihalawa/git/PROJECTS_AUTOCLIENT/2025-FINAL-TWENTY-CRM-cloned-and-adjusted/twenty-crm-clone/node_modules/.vite/packages/twenty-front/deps/chunk-TZEO3QPG.js?v=2ef45140:5207:65)\n    at notifySubscription (http://localhost:3001/@fs/Users/samihalawa/git/PROJECTS_AUTOCLIENT/2025-FINAL-TWENTY-CRM-cloned-and-adjusted/twenty-crm-clone/node_modules/.vite/packages/twenty-front/deps/chunk-M6JWULT2.js?v=2ef45140:2606:18)\n    at onNotify (http://localhost:3001/@fs/Users/samihalawa/git/PROJECTS_AUTOCLIENT/2025-FINAL-TWENTY-CRM-cloned-and-adjusted/twenty-crm-clone/node_modules/.vite/packages/twenty-front/deps/chunk-M6JWULT2.js?v=2ef45140:2640:3)\n    at error (http://localhost:3001/@fs/Users/samihalawa/git/PROJECTS_AUTOCLIENT/2025-FINAL-TWENTY-CRM-cloned-and-adjusted/twenty-crm-clone/node_modules/.vite/packages/twenty-front/deps/chunk-M6JWULT2.js?v=2ef45140:2698:9)\n    at <anonymous> (http://localhost:3001/@fs/Users/samihalawa/git/PROJECTS_AUTOCLIENT/2025-FINAL-TWENTY-CRM-cloned-and-adjusted/twenty-crm-clone/node_modules/.vite/packages/twenty-front/deps/chunk-M6JWULT2.js?v=2ef45140:3236:24)\n    at notifySubscription (http://localhost:3001/@fs/Users/samihalawa/git/PROJECTS_AUTOCLIENT/2025-FINAL-TWENTY-CRM-cloned-and-adjusted/twenty-crm-clone/node_modules/.vite/packages/twenty-front/deps/chunk-M6JWULT2.js?v=2ef45140:2606:18)\n    at onNotify (http://localhost:3001/@fs/Users/samihalawa/git/PROJECTS_AUTOCLIENT/2025-FINAL-TWENTY-CRM-cloned-and-adjusted/twenty-crm-clone/node_modules/.vite/packages/twenty-front/deps/chunk-M6JWULT2.js?v=2ef45140:2640:3)\n    at error (http://localhost:3001/@fs/Users/samihalawa/git/PROJECTS_AUTOCLIENT/2025-FINAL-TWENTY-CRM-cloned-and-adjusted/twenty-crm-clone/node_modules/.vite/packages/twenty-front/deps/chunk-M6JWULT2.js?v=2ef45140:2698:9)\n    at <anonymous> (http://localhost:3001/@fs/Users/samihalawa/git/PROJECTS_AUTOCLIENT/2025-FINAL-TWENTY-CRM-cloned-and-adjusted/twenty-crm-clone/node_modules/.vite/packages/twenty-front/deps/chunk-M6JWULT2.js?v=2ef45140:3200:23)",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    },
+    {
+      "type": "console-error",
+      "message": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "url": "http://localhost:3001/welcome"
+    }
+  ],
+  "summary": {
+    "totalRoutes": 8,
+    "successfulRoutes": 0,
+    "failedRoutes": 8,
+    "totalErrors": 23,
+    "routesWithAddButton": 0
+  }
+}

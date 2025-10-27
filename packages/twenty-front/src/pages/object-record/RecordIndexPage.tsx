@@ -3,8 +3,8 @@ import { contextStoreCurrentObjectMetadataItemIdComponentState } from '@/context
 import { ContextStoreComponentInstanceContext } from '@/context-store/states/contexts/ContextStoreComponentInstanceContext';
 import { useObjectMetadataItems } from '@/object-metadata/hooks/useObjectMetadataItems';
 import { RecordIndexContainerGater } from '@/object-record/record-index/components/RecordIndexContainerGater';
-import { SequencesListView } from '@/modules/sequences/components/SequencesListView';
-import { WebsetsView } from '@/modules/websets/components/WebsetsView';
+import { SequencesListView } from '@/modules/sequences/components';
+import { WebsetsView } from '@/modules/websets/components';
 import { PageContainer } from '@/ui/layout/page/components/PageContainer';
 import { useRecoilComponentValue } from '@/ui/utilities/state/component-state/hooks/useRecoilComponentValue';
 import { isUndefined } from '@sniptt/guards';
