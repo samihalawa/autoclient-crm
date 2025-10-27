@@ -1,5 +1,8 @@
+import { useFindManyRecords } from '@/object-record/hooks/useFindManyRecords';
+import { useCreateOneRecord } from '@/object-record/hooks/useCreateOneRecord';
+import { Plus, Crosshair, Sparkles, Users, Briefcase, Search, Loader2, AlertCircle } from 'lucide-react';
+import { Webset, WebsetScope } from '../types/webset.types';
 import { useState } from 'react';
-import { Plus, Crosshair, Sparkles, Users, Briefcase, Search } from 'lucide-react';
 
 /**
  * List view for Websets - shows all websets with criteria and enrichments
@@ -9,29 +12,37 @@ import { Plus, Crosshair, Sparkles, Users, Briefcase, Search } from 'lucide-reac
  * and enrichments for adding data to those results.
  */
 export const WebsetsView = () => {
-  const [websets] = useState([
-    // Mock data for now - will be replaced with GraphQL query
-    {
-      id: '1',
-      name: 'AI Startups in SF',
-      description: 'Recently funded AI companies in San Francisco',
-      scope: 'company',
-      criteriaCount: 3,
-      enrichmentsCount: 5,
-      resultsCount: 42,
-      lastRun: '2 hours ago',
-    },
-    {
-      id: '2',
-      name: 'VP of Sales Contacts',
-      description: 'Sales leaders in enterprise SaaS companies',
-      scope: 'person',
-      criteriaCount: 2,
-      enrichmentsCount: 3,
-      resultsCount: 128,
-      lastRun: '1 day ago',
-    },
-  ]);
+  const [isCreating, setIsCreating] = useState(false);
+
+  // Fetch websets from GraphQL
+  const { records: websets, loading, error, refetch } = useFindManyRecords<Webset>({
+    objectNameSingular: 'webset',
+    orderBy: [{ createdAt: 'DescNullsFirst' }],
+  });
+
+  // Hook for creating new websets
+  const { createOneRecord: createWebset } = useCreateOneRecord<Webset>({
+    objectNameSingular: 'webset',
+  });
+
+  const handleCreateWebset = async () => {
+    if (isCreating) return;
+    setIsCreating(true);
+    try {
+      await createWebset({
+        name: 'New Webset',
+        query: '',
+        scope: 'company' as WebsetScope,
+        depth: 25,
+        status: 'idle',
+      });
+      await refetch();
+    } catch (err) {
+      console.error('Failed to create webset:', err);
+    } finally {
+      setIsCreating(false);
+    }
+  };
 
   const getScopeIcon = (scope: string) => {
     switch (scope) {
@@ -55,6 +66,39 @@ export const WebsetsView = () => {
     }
   };
 
+  // Loading state
+  if (loading && !websets) {
+    return (
+      <div className="h-full flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 text-blue-600 animate-spin mx-auto mb-4" />
+          <p className="text-gray-600">Loading websets...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="h-full flex items-center justify-center bg-gray-50">
+        <div className="text-center max-w-md">
+          <AlertCircle className="w-12 h-12 text-red-600 mx-auto mb-4" />
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            Failed to load websets
+          </h3>
+          <p className="text-gray-600 mb-4">{error.message}</p>
+          <button
+            onClick={() => refetch()}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="h-full flex flex-col bg-gray-50">
       {/* Header */}
@@ -67,9 +111,17 @@ export const WebsetsView = () => {
               prospects
             </p>
           </div>
-          <button className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
-            <Plus className="w-4 h-4" />
-            <span>New Webset</span>
+          <button
+            onClick={handleCreateWebset}
+            disabled={isCreating}
+            className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isCreating ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <Plus className="w-4 h-4" />
+            )}
+            <span>{isCreating ? 'Creating...' : 'New Webset'}</span>
           </button>
         </div>
       </div>
@@ -155,7 +207,7 @@ export const WebsetsView = () => {
         </div>
 
         {/* Empty State */}
-        {websets.length === 0 && (
+        {(!websets || websets.length === 0) && (
           <div className="text-center py-12">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
               <Crosshair className="w-8 h-8 text-gray-400" />
@@ -167,8 +219,17 @@ export const WebsetsView = () => {
               Create your first webset to start finding and enriching prospects
               based on custom criteria
             </p>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
-              Create Webset
+            <button
+              onClick={handleCreateWebset}
+              disabled={isCreating}
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center space-x-2"
+            >
+              {isCreating ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Plus className="w-4 h-4" />
+              )}
+              <span>{isCreating ? 'Creating...' : 'Create Webset'}</span>
             </button>
           </div>
         )}
